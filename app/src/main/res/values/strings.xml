@@ -9,4 +9,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="bojack">Bojack.</string>
+    <string name="horseman">Horseman.</string>
+    <string name="obviously">Obviously..</string>
+    <string name="give_me_details">Give me details!</string>
+    <string name="app_version">App version: 1.0.0</string>
+    <string name="rights">All right reserved©</string>
 </resources>
