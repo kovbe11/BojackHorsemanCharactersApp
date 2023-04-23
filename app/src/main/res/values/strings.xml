@@ -1,14 +1,5 @@
 <resources>
     <string name="app_name">BojackHorsemanCharactersApp</string>
-    <string name="title_activity_welcome_screen">WelcomeScreenActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
     <string name="bojack">Bojack.</string>
     <string name="horseman">Horseman.</string>
     <string name="obviously">Obviously..</string>
@@ -16,4 +7,13 @@
     <string name="app_version">App version: 1.0.0</string>
     <string name="rights">All right reserved©</string>
     <string name="list_title">Characters</string>
+    <string name="details_title">Character details</string>
+    <string name="edit_title">Edit character</string>
+    <string name="add_title">New character</string>
+    <string name="voice_actor">Voice actor</string>
+    <string name="character_name">Character name</string>
+    <string name="species">Species</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
 </resources>
