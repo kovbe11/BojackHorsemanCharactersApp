@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.bojackhorseman.databinding.CharacterItemBinding
+import hu.bme.aut.android.bojackhorseman.databinding.FragmentCharacterItemBinding
 import hu.bme.aut.android.bojackhorseman.model.Character
 
 class CharactersRecyclerViewAdapter(
@@ -14,7 +14,7 @@ class CharactersRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            CharacterItemBinding.inflate(
+            FragmentCharacterItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -30,7 +30,8 @@ class CharactersRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: CharacterItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: FragmentCharacterItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         val contentView: TextView = binding.name
 
         override fun toString(): String {

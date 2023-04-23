@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import hu.bme.aut.android.bojackhorseman.databinding.CharactersListBinding
+import hu.bme.aut.android.bojackhorseman.databinding.FragmentCharactersListBinding
 import hu.bme.aut.android.bojackhorseman.placeholder.PlaceholderContent
 
 class CharacterFragment : Fragment() {
 
-    private lateinit var binding: CharactersListBinding
+    private lateinit var binding: FragmentCharactersListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = CharactersListBinding.inflate(inflater, container, false)
+        binding = FragmentCharactersListBinding.inflate(inflater, container, false)
 
         with(binding.characters) {
             layoutManager = LinearLayoutManager(context)
