@@ -6,29 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.bojackhorseman.R
+import hu.bme.aut.android.bojackhorseman.databinding.CharactersListBinding
 import hu.bme.aut.android.bojackhorseman.placeholder.PlaceholderContent
 
-/**
- * A fragment representing a list of Items.
- */
 class CharacterFragment : Fragment() {
+
+    private lateinit var binding: CharactersListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.characters_list, container, false)
+    ): View {
+        binding = CharactersListBinding.inflate(inflater, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
-                adapter = CharactersRecyclerViewAdapter(PlaceholderContent.ITEMS)
-            }
+        with(binding.characters) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = CharactersRecyclerViewAdapter(PlaceholderContent.ITEMS)
         }
-        return view
+
+        return binding.root
     }
 
     companion object {
