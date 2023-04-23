@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.commit
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.bojackhorseman.MainActivity
 import hu.bme.aut.android.bojackhorseman.R
@@ -14,9 +16,8 @@ import hu.bme.aut.android.bojackhorseman.ui.details.DetailsFragment
 import hu.bme.aut.android.bojackhorseman.ui.edit.EditFragment
 
 
-class CharactersRecyclerViewAdapter(
-    private val values: List<Character>
-) : RecyclerView.Adapter<CharactersRecyclerViewAdapter.ViewHolder>() {
+class CharactersRecyclerViewAdapter :
+    ListAdapter<Character, CharactersRecyclerViewAdapter.ViewHolder>(CharacterItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -31,7 +32,7 @@ class CharactersRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
+        val item = getItem(position)
         holder.contentView.text = item.name
         holder.editButton.setOnClickListener {
             (it.context as MainActivity).supportFragmentManager.commit {
@@ -45,8 +46,6 @@ class CharactersRecyclerViewAdapter(
         }
     }
 
-    override fun getItemCount(): Int = values.size
-
     inner class ViewHolder(binding: FragmentCharacterItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -58,4 +57,12 @@ class CharactersRecyclerViewAdapter(
         }
     }
 
+}
+
+object CharacterItemCallback : DiffUtil.ItemCallback<Character>() {
+    override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean =
+        oldItem == newItem
 }
