@@ -1,4 +1,4 @@
 package hu.bme.aut.android.bojackhorseman.ui.details
 
-class DetailsViewModel {
-}
+//@HiltViewModel
+class DetailsViewModel// : ViewModel()
