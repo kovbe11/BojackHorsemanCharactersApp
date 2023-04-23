@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import hu.bme.aut.android.bojackhorseman.R
 import hu.bme.aut.android.bojackhorseman.databinding.FragmentDetailsBinding
+import hu.bme.aut.android.bojackhorseman.model.Character
 import hu.bme.aut.android.bojackhorseman.ui.edit.EditFragment
 
-class DetailsFragment : Fragment() {
+// TODO wire in character
+class DetailsFragment(private val character: Character? = null) : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
 
