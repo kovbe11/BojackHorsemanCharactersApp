@@ -1,5 +1,6 @@
 package hu.bme.aut.android.bojackhorseman.ui.edit
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,6 +15,7 @@ class EditViewModel @Inject constructor(private val charactersInteractor: Charac
 
     fun onUpdate(character: Character) {
         viewModelScope.launch {
+            Log.i("debug", "update called with $character")
             charactersInteractor.updateCharacter(character)
         }
     }

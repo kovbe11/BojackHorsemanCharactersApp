@@ -36,12 +36,14 @@ class CharactersRecyclerViewAdapter :
         holder.contentView.text = item.name
         holder.editButton.setOnClickListener {
             (it.context as MainActivity).supportFragmentManager.commit {
-                replace(R.id.fragment_container, EditFragment.newInstance())
+                addToBackStack("characters")
+                replace(R.id.fragment_container, EditFragment.newInstance(item))
             }
         }
         holder.itemView.setOnClickListener {
             (it.context as MainActivity).supportFragmentManager.commit {
-                replace(R.id.fragment_container, DetailsFragment.newInstance())
+                addToBackStack("characters")
+                replace(R.id.fragment_container, DetailsFragment.newInstance(item))
             }
         }
     }
