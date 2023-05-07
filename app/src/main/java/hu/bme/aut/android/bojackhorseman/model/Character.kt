@@ -1,7 +1,12 @@
 package hu.bme.aut.android.bojackhorseman.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "characters")
 data class Character(
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val name: String,
     val voiceActor: String,
     val species: String
