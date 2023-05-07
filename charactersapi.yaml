@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Character API
+  version: 1.0.0
+servers:
+  - url: https://example.com/api
+paths:
+  /characters:
+    get:
+      summary: Retrieve a list of characters
+      responses:
+        '200':
+          description: A list of characters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
+    post:
+      summary: Create a new character
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character'
+      responses:
+        '201':
+          description: The newly created character
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+  /characters/{id}:
+    put:
+      summary: Update an existing character
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The ID of the character to update
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character'
+      responses:
+        '204':
+          description: The character was successfully updated
+    delete:
+      summary: Delete an existing character
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The ID of the character to delete
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: The character was successfully deleted
+components:
+  schemas:
+    Character:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        voiceActor:
+          type: string
+        species:
+          type: string
+      required:
+        - name
+        - voiceActor
+        - species

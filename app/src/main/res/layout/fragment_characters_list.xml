@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_anchor="@id/fragment_container"
     app:layout_anchorGravity="bottom|end"
-    tools:context=".ui.list.CharacterFragment">
+    tools:context=".ui.list.CharactersFragment">
 
     <TextView
         android:id="@+id/title"

@@ -13,7 +13,7 @@ import hu.bme.aut.android.bojackhorseman.R
 import hu.bme.aut.android.bojackhorseman.databinding.FragmentCharactersListBinding
 import hu.bme.aut.android.bojackhorseman.ui.add.AddFragment
 
-class CharacterFragment : Fragment() {
+class CharactersFragment : Fragment() {
 
     private lateinit var binding: FragmentCharactersListBinding
 
@@ -36,6 +36,7 @@ class CharacterFragment : Fragment() {
 
         binding.fab.setOnClickListener {
             parentFragmentManager.commit {
+                addToBackStack("characters")
                 replace(R.id.fragment_container, AddFragment.newInstance())
             }
         }
@@ -56,6 +57,6 @@ class CharacterFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance() = CharacterFragment()
+        fun newInstance() = CharactersFragment()
     }
 }
