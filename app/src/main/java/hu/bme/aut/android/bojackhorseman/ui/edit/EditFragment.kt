@@ -5,13 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
+import hu.bme.aut.android.bojackhorseman.R
 import hu.bme.aut.android.bojackhorseman.databinding.FragmentEditBinding
 import hu.bme.aut.android.bojackhorseman.model.Character
+import hu.bme.aut.android.bojackhorseman.ui.list.CharactersFragment
 
-// TODO wire character in
-class EditFragment(private val character: Character? = null) : Fragment() {
+class EditFragment(private val character: Character) : Fragment() {
     private lateinit var binding: FragmentEditBinding
     private lateinit var viewModel: EditViewModel
     override fun onCreateView(
@@ -19,11 +23,28 @@ class EditFragment(private val character: Character? = null) : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEditBinding.inflate(inflater, container, false)
+        binding.characterName.setValue(character.name)
+        binding.voiceActor.setValue(character.voiceActor)
+        binding.species.setValue(character.species)
         binding.saveButton.setOnClickListener {
-            viewModel.onUpdate(Character(1, "edited", "edited", "edited"))
+            val characterName = binding.characterName.str()
+            val voiceActor = binding.voiceActor.str()
+            val species = binding.species.str()
+            if (characterName.isEmpty() or voiceActor.isEmpty() or species.isEmpty()) {
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT)
+                    .show()
+                return@setOnClickListener
+            }
+            viewModel.onUpdate(Character(character.id, characterName, voiceActor, species))
+            parentFragmentManager.commit {
+                replace(R.id.fragment_container, CharactersFragment.newInstance())
+            }
         }
         binding.deleteButton.setOnClickListener {
-            viewModel.onDelete(Character(2, "toDelete", "toDelete", "toDelete"))
+            viewModel.onDelete(character)
+            parentFragmentManager.commit {
+                replace(R.id.fragment_container, CharactersFragment.newInstance())
+            }
         }
         return binding.root
     }
@@ -33,9 +54,12 @@ class EditFragment(private val character: Character? = null) : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[EditViewModel::class.java]
     }
 
+    private fun EditText.setValue(str: String) = this.text.insert(0, str)
+
+    private fun EditText.str() = this.text.toString()
 
     companion object {
         @JvmStatic
-        fun newInstance() = EditFragment()
+        fun newInstance(character: Character) = EditFragment(character)
     }
 }

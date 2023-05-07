@@ -11,8 +11,7 @@ import hu.bme.aut.android.bojackhorseman.databinding.FragmentDetailsBinding
 import hu.bme.aut.android.bojackhorseman.model.Character
 import hu.bme.aut.android.bojackhorseman.ui.edit.EditFragment
 
-// TODO wire in character
-class DetailsFragment(private val character: Character? = null) : Fragment() {
+class DetailsFragment(private val character: Character) : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
 
@@ -21,9 +20,14 @@ class DetailsFragment(private val character: Character? = null) : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        binding.characterName.text = character.name
+        binding.voiceActor.text = character.voiceActor
+        binding.species.text = character.species
+
         binding.editButton.setOnClickListener {
             parentFragmentManager.commit {
-                replace(R.id.fragment_container, EditFragment.newInstance()) //TODO pass data
+                addToBackStack("details")
+                replace(R.id.fragment_container, EditFragment.newInstance(character))
             }
         }
         return binding.root
@@ -31,7 +35,7 @@ class DetailsFragment(private val character: Character? = null) : Fragment() {
 
 
     companion object {
-        fun newInstance() =
-            DetailsFragment()
+        fun newInstance(character: Character) =
+            DetailsFragment(character)
     }
 }

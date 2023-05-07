@@ -19,6 +19,7 @@ class CharactersViewModel @Inject constructor(private val charactersInteractor: 
     fun loadCharacters() = viewModelScope.launch {
         charactersInteractor.getCharacters().also { characters.postValue(it) }
     }
+
 }
 
 

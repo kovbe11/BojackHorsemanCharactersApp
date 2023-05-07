@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import hu.bme.aut.android.bojackhorseman.R
 import hu.bme.aut.android.bojackhorseman.databinding.FragmentWelcomeScreenBinding
-import hu.bme.aut.android.bojackhorseman.ui.list.CharacterFragment
+import hu.bme.aut.android.bojackhorseman.ui.list.CharactersFragment
 
 class WelcomeScreenFragment : Fragment() {
 
@@ -27,7 +27,7 @@ class WelcomeScreenFragment : Fragment() {
 
         binding.button.setOnClickListener {
             parentFragmentManager.commit {
-                replace(R.id.fragment_container, CharacterFragment.newInstance())
+                replace(R.id.fragment_container, CharactersFragment.newInstance())
             }
         }
     }
