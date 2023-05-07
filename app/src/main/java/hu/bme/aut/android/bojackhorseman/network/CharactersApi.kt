@@ -1,20 +1,19 @@
 package hu.bme.aut.android.bojackhorseman.network
 
-import hu.bme.aut.android.bojackhorseman.model.Character
 import retrofit2.Response
 import retrofit2.http.*
 
 
 interface CharactersApi {
-    @POST
-    suspend fun create(character: Character): Response<Unit>
+    @POST("characters")
+    suspend fun create(@Body character: CharacterDTO): Response<Unit>
 
-    @GET
-    suspend fun findAll(): Response<List<Character>>
+    @GET("characters")
+    suspend fun findAll(): Response<List<CharacterDTO>>
 
-    @PUT
-    suspend fun update(character: Character): Response<Unit>
+    @PUT("characters")
+    suspend fun update(@Body character: CharacterDTO): Response<Unit>
 
-    @DELETE("/{id}")
+    @DELETE("characters/{id}")
     suspend fun delete(@Path("id") id: Int): Response<Unit>
 }
