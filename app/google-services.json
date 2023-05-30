@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "752906168985",
+    "project_id": "bojackhorsemancharactersapp",
+    "storage_bucket": "bojackhorsemancharactersapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752906168985:android:f7e93c2b2c6c73b5b06608",
+        "android_client_info": {
+          "package_name": "hu.bme.aut.android.bojackhorseman"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqgqwn1zClNbasXQ5qwUtXDNTZtrff1GU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
