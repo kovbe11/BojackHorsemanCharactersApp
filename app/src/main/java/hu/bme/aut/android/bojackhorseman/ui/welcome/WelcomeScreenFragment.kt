@@ -30,6 +30,9 @@ class WelcomeScreenFragment : Fragment() {
                 replace(R.id.fragment_container, CharactersFragment.newInstance())
             }
         }
+        binding.crashButton.setOnClickListener {
+            throw RuntimeException("Test Crash") // Force a crash
+        }
     }
 
     companion object {
